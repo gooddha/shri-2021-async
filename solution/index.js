@@ -1,7 +1,5 @@
-// solution/index.js
 module.exports = function (Homework) {
 
-  // вспомогательные фукнции и т.д.
   const { AsyncArray, add, subtract, multiply, divide, less, equal, lessOrEqual } = Homework;
   let getLength = async (array) => {
     return await new Promise((resolve) => {
@@ -22,8 +20,6 @@ module.exports = function (Homework) {
   }
 
   return async (array, fn, initialValue, cb) => {
-
-    // асинхронный reduce     
 
     let length = await getLength(asyncArray)
 
