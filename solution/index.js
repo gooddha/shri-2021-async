@@ -3,7 +3,7 @@ module.exports = function (Homework) {
   const { AsyncArray, add, subtract, multiply, divide, less, equal, lessOrEqual } = Homework;
   let getLength = async (array) => {
     return await new Promise((resolve) => {
-      array.length((res) => resolve(res));
+      array['length']((res) => resolve(res));
     });
   }
 
@@ -19,7 +19,7 @@ module.exports = function (Homework) {
     });
   }
 
-  return async (array, fn, initialValue, cb) => {
+  return async (asyncArray, fn, initialValue, cb) => {
 
     let length = await getLength(asyncArray)
 

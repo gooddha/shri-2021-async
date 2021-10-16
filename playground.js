@@ -48,51 +48,10 @@
 const asyncArray = new Homework.AsyncArray([1, 2, 3, 4]);
 const reducerSum = (acc, curr, i, src, cb) => Homework.add(acc, curr, cb);
 
+const reduce = require('./solution/index')(Homework);
 reduce(asyncArray, reducerSum, 0, (res) => {
     console.log(res); // 10
 });
-
-
-
-async function reduce(asyncArray, fn, initialValue, cb) {
-
-    const { AsyncArray, add, subtract, multiply, divide, less, equal, lessOrEqual } = Homework;
-
-    let getLength = async (array) => {
-        return await new Promise((resolve) => {
-            array.length((res) => resolve(res));
-        });
-    }
-
-    let getValue = async (i, array) => {
-        return await new Promise((resolve) => {
-            array.get(i, (res) => resolve(res));
-        });
-    }
-
-    let calc = async (method, a, b) => {
-        return await new Promise((resolve) => {
-            method(a, b, (res) => resolve(res));
-        });
-    }
-
-    let length = await getLength(asyncArray)
-
-    let acc = initialValue;
-    let i = 0;
-
-    while (await calc(less, i, length)) {
-        let current = await getValue(i, asyncArray);
-        console.log(current)
-
-        acc = await calc(add, current, acc)
-
-        i = await calc(add, 1, i);
-    }
-
-    cb(acc);
-}
-
 
 // const { AsyncArray, add, subtract, multiply, divide, less, equal, lessOrEqual } = Homework;
 
